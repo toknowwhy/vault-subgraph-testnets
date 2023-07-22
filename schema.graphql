@@ -1,0 +1,81 @@
+type Approval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  operator: Bytes! # address
+  allow: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CollateralOwnerTrasnfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  token: Bytes! # address
+  tokenAssets: BigInt! # uint256
+  unitDebt: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DecreaseCollateral @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  unitDebt: BigInt! # uint256
+  collateralToken: Bytes! # address
+  collateralAmount: BigInt! # uint256
+  liquidationPrice: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DecreaseDebt @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  unitDebt: BigInt! # uint256
+  collateralToken: Bytes! # address
+  amount: BigInt! # uint256
+  liquidationPrice: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type IncreaseCollateral @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  unitDebt: BigInt! # uint256
+  collateralToken: Bytes! # address
+  amount: BigInt! # uint256
+  liquidationPrice: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type IncreaseDebt @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  unitDebt: BigInt! # uint256
+  collateralToken: Bytes! # address
+  amount: BigInt! # uint256
+  liquidationPrice: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LiquidateCollateral @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  collateralToken: Bytes! # address
+  tokenAssets: BigInt! # uint256
+  unitDebt: BigInt! # uint256
+  feeTo: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

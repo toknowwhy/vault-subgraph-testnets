@@ -1,0 +1,42 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Vault
+    network: sepolia
+    source:
+      address: "0x003f0050Dce0B3ad327884be0ecD122b044627F3"
+      abi: Vault
+      startBlock: 3940292
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - CollateralOwnerTrasnfer
+        - DecreaseCollateral
+        - DecreaseDebt
+        - IncreaseCollateral
+        - IncreaseDebt
+        - LiquidateCollateral
+      abis:
+        - name: Vault
+          file: ./abis/Vault.json
+      eventHandlers:
+        - event: Approval(indexed address,address,bool)
+          handler: handleApproval
+        - event: CollateralOwnerTrasnfer(indexed address,indexed address,address,uint256,uint256)
+          handler: handleCollateralOwnerTrasnfer
+        - event: DecreaseCollateral(indexed address,indexed uint256,address,uint256,indexed uint256)
+          handler: handleDecreaseCollateral
+        - event: DecreaseDebt(indexed address,indexed uint256,address,uint256,indexed uint256)
+          handler: handleDecreaseDebt
+        - event: IncreaseCollateral(indexed address,indexed uint256,address,uint256,indexed uint256)
+          handler: handleIncreaseCollateral
+        - event: IncreaseDebt(indexed address,indexed uint256,address,uint256,indexed uint256)
+          handler: handleIncreaseDebt
+        - event: LiquidateCollateral(indexed address,address,uint256,uint256,address)
+          handler: handleLiquidateCollateral
+      file: ./src/vault.ts
