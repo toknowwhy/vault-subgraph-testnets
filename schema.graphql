@@ -20,48 +20,12 @@ type CollateralOwnerTrasnfer @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type DecreaseCollateral @entity(immutable: true) {
+type VaultAction @entity(immutable: true) {
   id: Bytes!
   owner: Bytes! # address
+  name: String!
   unitDebt: BigInt! # uint256
   collateralToken: Bytes! # address
-  collateralAmount: BigInt! # uint256
-  liquidationPrice: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type DecreaseDebt @entity(immutable: true) {
-  id: Bytes!
-  owner: Bytes! # address
-  unitDebt: BigInt! # uint256
-  collateralToken: Bytes! # address
-  amount: BigInt! # uint256
-  liquidationPrice: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type IncreaseCollateral @entity(immutable: true) {
-  id: Bytes!
-  owner: Bytes! # address
-  unitDebt: BigInt! # uint256
-  collateralToken: Bytes! # address
-  amount: BigInt! # uint256
-  liquidationPrice: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type IncreaseDebt @entity(immutable: true) {
-  id: Bytes!
-  owner: Bytes! # address
-  unitDebt: BigInt! # uint256
-  collateralToken: Bytes! # address
-  amount: BigInt! # uint256
   liquidationPrice: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!

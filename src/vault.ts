@@ -10,10 +10,7 @@ import {
 import {
   Approval,
   CollateralOwnerTrasnfer,
-  DecreaseCollateral,
-  DecreaseDebt,
-  IncreaseCollateral,
-  IncreaseDebt,
+  VaultAction,
   LiquidateCollateral
 } from "../generated/schema"
 
@@ -52,13 +49,13 @@ export function handleCollateralOwnerTrasnfer(
 }
 
 export function handleDecreaseCollateral(event: DecreaseCollateralEvent): void {
-  let entity = new DecreaseCollateral(
+  let entity = new VaultAction(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity.owner = event.params.owner
   entity.unitDebt = event.params.unitDebt
   entity.collateralToken = event.params.collateralToken
-  entity.collateralAmount = event.params.collateralAmount
+  entity.name = 'DecreaseCollateral'
   entity.liquidationPrice = event.params.liquidationPrice
 
   entity.blockNumber = event.block.number
@@ -69,13 +66,13 @@ export function handleDecreaseCollateral(event: DecreaseCollateralEvent): void {
 }
 
 export function handleDecreaseDebt(event: DecreaseDebtEvent): void {
-  let entity = new DecreaseDebt(
+  let entity = new VaultAction(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity.owner = event.params.owner
   entity.unitDebt = event.params.unitDebt
   entity.collateralToken = event.params.collateralToken
-  entity.amount = event.params.amount
+  entity.name = 'DecreaseDebt'
   entity.liquidationPrice = event.params.liquidationPrice
 
   entity.blockNumber = event.block.number
@@ -86,13 +83,13 @@ export function handleDecreaseDebt(event: DecreaseDebtEvent): void {
 }
 
 export function handleIncreaseCollateral(event: IncreaseCollateralEvent): void {
-  let entity = new IncreaseCollateral(
+  let entity = new VaultAction(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity.owner = event.params.owner
   entity.unitDebt = event.params.unitDebt
   entity.collateralToken = event.params.collateralToken
-  entity.amount = event.params.amount
+  entity.name = 'IncreaseCollateral'
   entity.liquidationPrice = event.params.liquidationPrice
 
   entity.blockNumber = event.block.number
@@ -103,13 +100,13 @@ export function handleIncreaseCollateral(event: IncreaseCollateralEvent): void {
 }
 
 export function handleIncreaseDebt(event: IncreaseDebtEvent): void {
-  let entity = new IncreaseDebt(
+  let entity = new VaultAction(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity.owner = event.params.owner
   entity.unitDebt = event.params.unitDebt
   entity.collateralToken = event.params.collateralToken
-  entity.amount = event.params.amount
+  entity.name = 'IncreaseDebt'
   entity.liquidationPrice = event.params.liquidationPrice
 
   entity.blockNumber = event.block.number
